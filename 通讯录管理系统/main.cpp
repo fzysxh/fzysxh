@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-#define ÄÐ 1
-#define Å® 2
+#define ç”· 1
+#define å¥³ 2
 #define MAX 100
 struct person
 {
@@ -19,13 +19,13 @@ struct book
 void menu()
 {
 	cout << "***********************" << endl;
-	cout << "*****1¡¢Ìí¼ÓÁªÏµÈË*****" << endl;
-	cout << "*****2¡¢ÏÔÊ¾ÁªÏµÈË*****" << endl;
-	cout << "*****3¡¢É¾³ýÁªÏµÈË*****" << endl;
-	cout << "*****4¡¢²éÕÒÁªÏµÈË*****" << endl;
-	cout << "*****5¡¢ÐÞ¸ÄÁªÏµÈË*****" << endl;
-	cout << "*****6¡¢Çå¿ÕÁªÏµÈË*****" << endl;
-	cout << "*****0¡¢ÍË³öÍ¨Ñ¶Â¼*****" << endl;
+	cout << "*****1ã€æ·»åŠ è”ç³»äºº*****" << endl;
+	cout << "*****2ã€æ˜¾ç¤ºè”ç³»äºº*****" << endl;
+	cout << "*****3ã€åˆ é™¤è”ç³»äºº*****" << endl;
+	cout << "*****4ã€æŸ¥æ‰¾è”ç³»äºº*****" << endl;
+	cout << "*****5ã€ä¿®æ”¹è”ç³»äºº*****" << endl;
+	cout << "*****6ã€æ¸…ç©ºè”ç³»äºº*****" << endl;
+	cout << "*****0ã€é€€å‡ºé€šè®¯å½•*****" << endl;
 	cout << "***********************" << endl;
 }
 void add_love(book *adr)
@@ -33,10 +33,10 @@ void add_love(book *adr)
 	int temp;
 	if (adr->size < 1000)
 	{
-		cout << "ÇëÊäÈëÐÕÃû" << endl;
+		cout << "è¯·è¾“å…¥å§“å" << endl;
 		cin >> adr->love[adr->size].name;
 
-		cout << "ÇëÊäÈëÐÔ±ð" << endl << "1ÎªÄÐÐÔ£¬2ÎªÅ®ÐÔ"<<endl;
+		cout << "è¯·è¾“å…¥æ€§åˆ«" << endl << "1ä¸ºç”·æ€§ï¼Œ2ä¸ºå¥³æ€§"<<endl; 
 		while (1)
 		{
 			cin >> temp;
@@ -45,30 +45,30 @@ void add_love(book *adr)
 				adr->love[adr->size].sex = temp;
 				break;
 			}
-			else cout << "±¾³ÌÐò²»Ö§³ÖµÚÈýÐÔ±ð" << endl;
+			else cout << "æœ¬ç¨‹åºä¸æ”¯æŒç¬¬ä¸‰æ€§åˆ«" << endl;
 		}
 
-		cout << "ÇëÊäÈëµç»°ºÅÂë" << endl;
+		cout << "è¯·è¾“å…¥ç”µè¯å·ç " << endl;
 		cin >> adr->love[adr->size].phone;
 
-		cout << "ÇëÊäÈëµØÖ·" << endl;
+		cout << "è¯·è¾“å…¥åœ°å€" << endl;
 		cin >> adr->love[adr->size].address;
 		adr->size ++;
 		system("cls");
 		menu();
-		cout << "Ìí¼Ó³É¹¦!" << endl;
+		cout << "æ·»åŠ æˆåŠŸ!" << endl;
 	}
-	else cout << "ÕâÀïÂúÔ±ÁË" << endl;
+	else cout << "è¿™é‡Œæ»¡å‘˜äº†" << endl;
 }
 void show_love(book const* adr)
 {
 	uint8_t i;
 	for (i = 0; i < adr->size; i++)
 	{
-		cout << "ÐÕÃû:" << adr->love[i].name << "\t\t";
-		cout << "ÐÔ±ð:" << (adr->love[i].sex == 1 ? "ÄÐÐÔ":"Å®ÐÔ") << "\t\t";
-		cout << "µç»°ºÅÂë:" << adr->love[i].phone << "\t\t";
-		cout << "µØÖ·:" << adr->love[i].address << endl;
+		cout << "å§“å:" << adr->love[i].name << "\t\t";
+		cout << "æ€§åˆ«:" << (adr->love[i].sex == 1 ? "ç”·æ€§":"å¥³æ€§") << "\t\t";
+		cout << "ç”µè¯å·ç :" << adr->love[i].phone << "\t\t";
+		cout << "åœ°å€:" << adr->love[i].address << endl;
 	}
 }
 uint8_t find_love(book const* adr,string name,int * del)
@@ -78,10 +78,10 @@ uint8_t find_love(book const* adr,string name,int * del)
 	{
 		if (adr->love[i].name == name)
 		{
-			cout << "ÐÕÃû:" << adr->love[i].name << "\t\t";
-			cout << "ÐÔ±ð:" << (adr->love[i].sex == 1 ? "ÄÐÐÔ" : "Å®ÐÔ") << "\t\t";
-			cout << "µç»°ºÅÂë:" << adr->love[i].phone << "\t\t";
-			cout << "µØÖ·:" << adr->love[i].address << endl;
+			cout << "å§“å:" << adr->love[i].name << "\t\t";
+			cout << "æ€§åˆ«:" << (adr->love[i].sex == 1 ? "ç”·æ€§" : "å¥³æ€§") << "\t\t";
+			cout << "ç”µè¯å·ç :" << adr->love[i].phone << "\t\t";
+			cout << "åœ°å€:" << adr->love[i].address << endl;
 			del[temp] = i;
 			temp++;
 		}
@@ -110,10 +110,10 @@ void delete_love(book *adr,uint16_t i)
 }
 void change_love(book* adr,int  del)
 {
-	cout << "ÇëÊäÈëÐÕÃû" << endl;
+	cout << "è¯·è¾“å…¥å§“å" << endl;
 	cin >> adr->love[del].name;
 
-	cout << "ÇëÊäÈëÐÔ±ð" << endl << "1ÎªÄÐÐÔ£¬2ÎªÅ®ÐÔ" << endl;
+	cout << "è¯·è¾“å…¥æ€§åˆ«" << endl << "1ä¸ºç”·æ€§ï¼Œ2ä¸ºå¥³æ€§" << endl;
 	while (1)
 	{
 		int temp;
@@ -123,25 +123,25 @@ void change_love(book* adr,int  del)
 			adr->love[del].sex = temp;
 			break;
 		}
-		else cout << "±¾³ÌÐò²»Ö§³ÖµÚÈýÐÔ±ð" << endl;
+		else cout << "æœ¬ç¨‹åºä¸æ”¯æŒç¬¬ä¸‰æ€§åˆ«" << endl;
 	}
 
-	cout << "ÇëÊäÈëµç»°ºÅÂë" << endl;
+	cout << "è¯·è¾“å…¥ç”µè¯å·ç " << endl;
 	cin >> adr->love[del].phone;
 
-	cout << "ÇëÊäÈëµØÖ·" << endl;
+	cout << "è¯·è¾“å…¥åœ°å€" << endl;
 	cin >> adr->love[del].address;
-	cout << "ÐÞ¸Ä³É¹¦" << endl;
+	cout << "ä¿®æ”¹æˆåŠŸ" << endl;
 }
 void clear_love(book* adr)
 {
 	int temp;
-	cout << "È·¶¨Çå¿ÕÁªÏµÈË£¿ÊäÈë1È·¶¨£¬2È¡Ïû" << endl;
+	cout << "ç¡®å®šæ¸…ç©ºè”ç³»äººï¼Ÿè¾“å…¥1ç¡®å®šï¼Œ2å–æ¶ˆ" << endl;
 	cin >> temp;
 	if (temp == 1)
 	{
 		adr->size = 0;
-		cout << "ÒÑÇå¿Õ"<<endl;
+		cout << "å·²æ¸…ç©º"<<endl;
 	}
 	else
 	{
@@ -163,7 +163,7 @@ int main()
 
 			case 0:
 			{
-				cout << "»¶Ó­ÏÂ´ÎÊ¹ÓÃ£¬´ó¸Å°É" << endl;
+				cout << "æ¬¢è¿Žä¸‹æ¬¡ä½¿ç”¨ï¼Œå¤§æ¦‚å§" << endl;
 				system("pause");
 				return 0;
 				break;
@@ -188,24 +188,24 @@ int main()
 			{
 				string name;
 				int j=0;
-				cout << "ÇëÊäÈëÐÕÃû" << endl;
+				cout << "è¯·è¾“å…¥å§“å" << endl;
 				cin >> name;
 				uint8_t re = find_love(&My_book, name,del);
 				if (re == -1)
 				{
-					cout << "²éÎÞ´ËÈË" << endl;
+					cout << "æŸ¥æ— æ­¤äºº" << endl;
 				}
 			    if (re == 0)
 				{
 					delete_love(&My_book, del[0]);
-					cout << "É¾³ý³É¹¦" << endl;
+					cout << "åˆ é™¤æˆåŠŸ" << endl;
 				}
 			    if (re == 1)
 				{
-					cout << "ÒªÉ¾³ýµÚ¼¸Î»" << name << "?"<<endl;
+					cout << "è¦åˆ é™¤ç¬¬å‡ ä½" << name << "?"<<endl;
 					cin >> j;
 					delete_love(&My_book,del[j-1]);
-					cout << "É¾³ý³É¹¦" << endl;
+					cout << "åˆ é™¤æˆåŠŸ" << endl;
 				}
 				system("pause");
 				system("cls");
@@ -215,7 +215,7 @@ int main()
 			case 4:
 			{
 				string name;
-				cout << "ÇëÊäÈëÐÕÃû" << endl;
+				cout << "è¯·è¾“å…¥å§“å" << endl;
 				cin >> name;
 				find_love(&My_book, name, del);
 				system("pause");
@@ -227,12 +227,12 @@ int main()
 			{
 				string name;
 				int j = 0;
-				cout << "ÇëÊäÈëÐÕÃû" << endl;
+				cout << "è¯·è¾“å…¥å§“å" << endl;
 				cin >> name;
 				uint8_t re = find_love(&My_book, name, del);
 				if (re == -1)
 				{
-					cout << "²éÎÞ´ËÈË" << endl;
+					cout << "æŸ¥æ— æ­¤äºº" << endl;
 				}
 				if (re == 0)
 				{
@@ -240,7 +240,7 @@ int main()
 				}
 				if (re == 1)
 				{
-					cout << "ÒªÐÞ¸ÄµÚ¼¸Î»" << name << "?" << endl;
+					cout << "è¦ä¿®æ”¹ç¬¬å‡ ä½" << name << "?" << endl;
 					cin >> j;
 					change_love(&My_book, del[j - 1]);
 				}
