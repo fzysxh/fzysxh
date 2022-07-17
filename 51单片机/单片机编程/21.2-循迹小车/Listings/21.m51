@@ -1,0 +1,286 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/16/2022  21:52:58  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\GJRJ3\KEIL4\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\Timer0.obj, .\Objects\logic.obj TO .\Objects\21.1-驱动小车
+>>  PRINT (.\Listings\21.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\Timer0.obj (TIMER0)
+  .\Objects\logic.obj (LOGIC)
+  D:\GJRJ3\KEIL4\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\GJRJ3\KEIL4\C51\LIB\C51S.LIB (?C?UIDIV)
+  D:\GJRJ3\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\21.1-驱动小车 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         ?DT?MAIN
+            DATA    000EH     0004H     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0091H     UNIT         ?PR?_LOGIC?LOGIC
+            CODE    009FH     008CH     UNIT         ?C_C51STARTUP
+            CODE    012BH     0061H     UNIT         ?PR?TIMER0?MAIN
+            CODE    018CH     0055H     UNIT         ?C?LIB_CODE
+            CODE    01E1H     0025H     UNIT         ?PR?MAIN?MAIN
+            CODE    0206H     0017H     UNIT         ?PR?TIMER0INIT?TIMER0
+            CODE    021DH     000DH     UNIT         ?PR?CAR_MOVE?LOGIC
+            CODE    022AH     000CH     UNIT         ?PR?CAR_LEFT?LOGIC
+            CODE    0236H     000CH     UNIT         ?PR?CAR_LLEFT?LOGIC
+            CODE    0242H     000BH     UNIT         ?PR?CAR_RIGHT?LOGIC
+            CODE    024DH     000BH     UNIT         ?PR?CAR_LRIGHT?LOGIC
+            CODE    0258H     000AH     UNIT         ?PR?CAR_STOP?LOGIC
+            CODE    0262H     0009H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\21.1-驱动小车 (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2022  21:52:58  PAGE 2
+
+
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?TIMER0INIT?TIMER0
+  +--> ?PR?_LOGIC?LOGIC
+
+?PR?_LOGIC?LOGIC               000EH    0004H
+  +--> ?PR?CAR_STOP?LOGIC
+  +--> ?PR?CAR_MOVE?LOGIC
+  +--> ?PR?CAR_LLEFT?LOGIC
+  +--> ?PR?CAR_LRIGHT?LOGIC
+  +--> ?PR?CAR_RIGHT?LOGIC
+  +--> ?PR?CAR_LEFT?LOGIC
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\21.1-驱动小车 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:000AH         PUBLIC        right
+  C:01E1H         PUBLIC        main
+  B:0080H.2       PUBLIC        OUT1
+  B:0080H.3       PUBLIC        OUT2
+  B:0080H.4       PUBLIC        OUT3
+  D:000CH         PUBLIC        left
+  B:0080H.5       PUBLIC        OUT4
+  C:012BH         PUBLIC        Timer0
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:0080H.1       PUBLIC        CTRL
+  B:0080H.6       PUBLIC        CTRR
+  B:00A0H.0       PUBLIC        IN1
+  B:00A0H.1       PUBLIC        IN2
+  B:00A0H.2       PUBLIC        IN3
+  B:00A0H.3       PUBLIC        IN4
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:01E1H         LINE#         15
+  C:01E1H         LINE#         16
+  C:01E1H         LINE#         17
+  C:01E3H         LINE#         18
+  C:01E5H         LINE#         19
+  C:01E7H         LINE#         20
+  C:01E9H         LINE#         21
+  C:01ECH         LINE#         22
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2022  21:52:58  PAGE 3
+
+
+  C:01ECH         LINE#         23
+  C:01ECH         LINE#         24
+  C:0204H         LINE#         25
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0
+  -------         DO            
+  D:0008H         SYMBOL        count
+  -------         ENDDO         
+  C:012BH         LINE#         27
+  C:013EH         LINE#         30
+  C:0141H         LINE#         31
+  C:0144H         LINE#         32
+  C:014CH         LINE#         33
+  C:0159H         LINE#         34
+  C:015BH         LINE#         35
+  C:016AH         LINE#         36
+  C:016CH         LINE#         37
+  C:017BH         LINE#         38
+  -------         ENDPROC       TIMER0
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMER0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00A8H.7       PUBLIC        EA
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:0206H         PUBLIC        Timer0Init
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:00B8H.1       PUBLIC        PT0
+  B:0088H.4       PUBLIC        TR0
+  -------         PROC          TIMER0INIT
+  C:0206H         LINE#         2
+  C:0206H         LINE#         3
+  C:0206H         LINE#         5
+  C:0209H         LINE#         6
+  C:020CH         LINE#         7
+  C:020FH         LINE#         8
+  C:0212H         LINE#         9
+  C:0214H         LINE#         10
+  C:0216H         LINE#         11
+  C:0218H         LINE#         12
+  C:021AH         LINE#         13
+  C:021CH         LINE#         14
+  -------         ENDPROC       TIMER0INIT
+  -------         ENDMOD        TIMER0
+
+  -------         MODULE        LOGIC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:000EH         PUBLIC        _logic
+  D:00B8H         PUBLIC        IP
+  C:024DH         PUBLIC        car_lright
+  C:0236H         PUBLIC        car_lleft
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2022  21:52:58  PAGE 4
+
+
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0242H         PUBLIC        car_right
+  C:022AH         PUBLIC        car_left
+  C:021DH         PUBLIC        car_move
+  C:0258H         PUBLIC        car_stop
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          CAR_LEFT
+  C:022AH         LINE#         7
+  C:022AH         LINE#         8
+  C:022AH         LINE#         9
+  C:0230H         LINE#         10
+  C:0235H         LINE#         11
+  -------         ENDPROC       CAR_LEFT
+  -------         PROC          CAR_RIGHT
+  C:0242H         LINE#         12
+  C:0242H         LINE#         13
+  C:0242H         LINE#         14
+  C:0247H         LINE#         15
+  C:024CH         LINE#         16
+  -------         ENDPROC       CAR_RIGHT
+  -------         PROC          CAR_LLEFT
+  C:0236H         LINE#         17
+  C:0236H         LINE#         18
+  C:0236H         LINE#         19
+  C:023CH         LINE#         20
+  C:0241H         LINE#         21
+  -------         ENDPROC       CAR_LLEFT
+  -------         PROC          CAR_LRIGHT
+  C:024DH         LINE#         22
+  C:024DH         LINE#         23
+  C:024DH         LINE#         24
+  C:0252H         LINE#         25
+  C:0257H         LINE#         26
+  -------         ENDPROC       CAR_LRIGHT
+  -------         PROC          CAR_STOP
+  C:0258H         LINE#         27
+  C:0258H         LINE#         28
+  C:0258H         LINE#         29
+  C:025DH         LINE#         30
+  C:0261H         LINE#         31
+  -------         ENDPROC       CAR_STOP
+  -------         PROC          CAR_MOVE
+  C:021DH         LINE#         32
+  C:021DH         LINE#         33
+  C:021DH         LINE#         34
+  C:0223H         LINE#         35
+  C:0229H         LINE#         36
+  -------         ENDPROC       CAR_MOVE
+  -------         PROC          _LOGIC
+  D:0007H         SYMBOL        IN1
+  D:0005H         SYMBOL        IN2
+  D:0003H         SYMBOL        IN3
+  D:0011H         SYMBOL        IN4
+  C:000EH         LINE#         37
+  C:000EH         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2022  21:52:58  PAGE 5
+
+
+  C:000EH         LINE#         40
+  C:001CH         LINE#         41
+  C:001CH         LINE#         42
+  C:001FH         LINE#         43
+  C:001FH         LINE#         45
+  C:0039H         LINE#         46
+  C:0039H         LINE#         47
+  C:003CH         LINE#         48
+  C:003CH         LINE#         50
+  C:004AH         LINE#         51
+  C:004AH         LINE#         52
+  C:004DH         LINE#         53
+  C:004DH         LINE#         55
+  C:005AH         LINE#         56
+  C:005AH         LINE#         57
+  C:005DH         LINE#         58
+  C:005DH         LINE#         60
+  C:006AH         LINE#         61
+  C:006AH         LINE#         62
+  C:006DH         LINE#         63
+  C:006DH         LINE#         65
+  C:007BH         LINE#         66
+  C:007BH         LINE#         67
+  C:007EH         LINE#         68
+  C:007EH         LINE#         69
+  C:008BH         LINE#         70
+  C:008BH         LINE#         71
+  C:008EH         LINE#         72
+  C:008EH         LINE#         73
+  C:009BH         LINE#         74
+  C:009BH         LINE#         75
+  C:009EH         LINE#         76
+  C:009EH         LINE#         77
+  -------         ENDPROC       _LOGIC
+  -------         ENDMOD        LOGIC
+
+  -------         MODULE        ?C?UIDIV
+  C:018CH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=19.0 xdata=0 code=611
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

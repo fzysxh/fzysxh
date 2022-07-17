@@ -1,0 +1,8 @@
+git branch//列出本地仓库的分支
+git branch -a//列出远程仓库以及本地仓库的分支
+git branch dev-a//创建dev-a新分支
+git checkout dev-a//切换到dev-a分支
+git add .//把修改的内容加到缓存Index中
+git commit -m "文字说明"//提交事务到本地仓库
+git checkout master//切换到master主分支（主线）
+git merge dev-a//合并分支，即把内容加到主线上

@@ -1,0 +1,14 @@
+#include<reg52.h>
+typedef unsigned int u16;
+typedef unsigned char u8;
+sbit kz1=P2^2;
+sbit kz2=P2^3;
+sbit kz3=P2^4;
+u8 code smg[]={0x3f  , 0x06 , 0x5b , 0x4f , 0x66 , 0x6d, 0x7d , 0x07 , 0x7f  , 0x6f , 0x77 , 0x7c ,0x39 , 0x5e , 0x79 , 0x71 };
+void main()
+{
+	kz1=0;
+	kz2=0;
+	kz3=0;
+	P0=smg[4];	 //0x66   0110 0110
+}

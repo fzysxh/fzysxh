@@ -1,0 +1,79 @@
+C51 COMPILER V9.54   MAIN                                                                  11/21/2021 12:35:33 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          typedef unsigned int u16;   
+   3          typedef unsigned char u8;
+   4          #define KEY P1
+   5          #define SMG P0
+   6          u16 zhi;
+   7          void delay(u16 i)
+   8          {
+   9   1        while(i--);
+  10   1      }
+  11          u8 code smgduan[17]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e};
+  12          void cs()
+  13          {
+  14   1        char a=0;
+  15   1          KEY=0x0f;
+  16   1          if(KEY!=0x0f)
+  17   1          {
+  18   2            delay(1000);
+  19   2            if(KEY!=0x0f)
+  20   2            {
+  21   3              KEY=0x0f;
+  22   3            switch(KEY)
+  23   3            {
+  24   4              case(0x0e):zhi=3;break;
+  25   4              case(0x0d):zhi=2;break;
+  26   4              case(0x0b):zhi=1;break;
+  27   4              case(0x07):zhi=0;break;
+  28   4            }
+  29   3              
+  30   3            KEY=0xf0;
+  31   3              switch(KEY)
+  32   3              {
+  33   4                case(0xe0):zhi+=12;break;
+  34   4                case(0xd0):zhi+=8;break;
+  35   4                case(0xb0):zhi+=4;break;
+  36   4                case(0x70):zhi+=0;break;
+  37   4              }
+  38   3            }
+  39   2            
+  40   2          
+  41   2      
+  42   2        }
+  43   1      }
+  44          void main()
+  45          {
+  46   1        while(1)
+  47   1        {
+  48   2          
+  49   2        cs();   
+  50   2        SMG=~smgduan[zhi];
+  51   2        }
+  52   1        
+  53   1      }
+
+C51 COMPILER V9.54   MAIN                                                                  11/21/2021 12:35:33 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    151    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

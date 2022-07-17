@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\independence_con.obj" 
+TO ".\Objects\dd" 
+PRINT(".\Listings\dd.m51") RAMSIZE(256) 

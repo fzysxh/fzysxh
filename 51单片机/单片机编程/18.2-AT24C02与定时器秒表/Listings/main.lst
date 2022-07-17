@@ -1,0 +1,121 @@
+C51 COMPILER V9.54   MAIN                                                                  01/04/2022 14:48:06 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include"independence_con.h"
+   3          #include"Timer0.h"
+   4          #include"smgnumber.h"
+   5          #include"I2C.h"
+   6          #include"AT24C02.h"
+   7          unsigned char Min,Sec,Msec,Run,T;
+   8          void main()
+   9          {
+  10   1        Timer0Init();
+  11   1        while(1)
+  12   1        {
+  13   2          T=Key();
+  14   2          Smg_Table(1,Min/10);
+  15   2          Smg_Table(2,Min%10);
+  16   2          Smg_Table(4,Sec/10);
+  17   2          Smg_Table(5,Sec%10);
+  18   2          Smg_Table(7,Msec/10);
+  19   2          Smg_Table(8,Msec%10);
+  20   2          if(T==1)
+  21   2          {
+  22   3            Run=!Run;
+  23   3          }   
+  24   2          if(T==2)
+  25   2          {
+  26   3            Min=0;
+  27   3            Sec=0;
+  28   3            Msec=0;
+  29   3          }
+  30   2          if(T==3)
+  31   2          {
+  32   3            AT24C02_Write(1,Min/10);
+  33   3            AT24C02_Write(2,Min%10);
+  34   3            AT24C02_Write(3,Sec/10);
+  35   3            AT24C02_Write(4,Sec%10);
+  36   3            AT24C02_Write(5,Msec/10);
+  37   3            AT24C02_Write(6,Msec%10);
+  38   3          }
+  39   2          if(T==4)
+  40   2          {
+  41   3            AT24C02_Receive(1);
+  42   3            AT24C02_Receive(2);
+  43   3            AT24C02_Receive(3);
+  44   3            AT24C02_Receive(4);
+  45   3            AT24C02_Receive(5);
+  46   3            AT24C02_Receive(6);
+  47   3          }
+  48   2        }
+  49   1        
+  50   1      }
+  51          void SEC_Loop()
+  52          {
+  53   1        if(Msec>99)
+  54   1        {
+C51 COMPILER V9.54   MAIN                                                                  01/04/2022 14:48:06 PAGE 2   
+
+  55   2          Msec=0;
+  56   2          Sec++;
+  57   2          if(Sec>59)
+  58   2          {
+  59   3            Sec=0;
+  60   3            Min++;
+  61   3            if(Min>99)
+  62   3            {Min=0;}
+  63   3          }
+  64   2        }
+  65   1      }
+  66          
+  67          void Timer0(void)   interrupt 1
+  68          {
+  69   1        static unsigned int count1,count2,count3;
+  70   1        TL0 = 0x66;   
+  71   1        TH0 = 0xFC;   
+  72   1        count1++;
+  73   1        if(count1>20)
+  74   1        {
+  75   2          KEY_Loop();
+  76   2          count1=0;
+  77   2          
+  78   2        }
+  79   1        count2++;
+  80   1        if(count2>1)
+  81   1        {
+  82   2          count2=0;
+  83   2          Smg_Loop();
+  84   2        }
+  85   1        if(Run==0)
+  86   1        {
+  87   2          count3++;
+  88   2          if(count3>9)
+  89   2          {
+  90   3            count3=0;
+  91   3            Msec++;
+  92   3            SEC_Loop();
+  93   3          }   
+  94   2        }
+  95   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    416    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

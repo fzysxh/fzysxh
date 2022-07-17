@@ -1,0 +1,45 @@
+C51 COMPILER V9.54   DTSMG                                                                 11/21/2021 22:55:42 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DTSMG
+OBJECT MODULE PLACED IN dtsmg.OBJ
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE dtsmg.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<regx52.h>
+   2          #include<intrins.h>
+   3          #include"delay.h"
+   4          #include"smgnumber.h"
+   5          typedef unsigned int u16;
+   6          typedef unsigned char u8;
+   7          
+   8          void main()
+   9          { 
+  10   1        while(1)
+  11   1        {
+  12   2          smgnumber(1,2);//第几位，显示数字
+  13   2          smgnumber(2,0);
+  14   2          smgnumber(3,0);
+  15   2          smgnumber(4,2);
+  16   2          smgnumber(5,1);
+  17   2          smgnumber(6,0);
+  18   2          smgnumber(7,1);
+  19   2          smgnumber(8,5);
+  20   2        }
+  21   1        
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

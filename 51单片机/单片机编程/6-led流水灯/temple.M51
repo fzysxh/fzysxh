@@ -1,0 +1,110 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/21/2021  19:33:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\GJRJ3\KEIL4\C51\BIN\BL51.EXE temple.obj TO temple RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  temple.obj (TEMPLE)
+  D:\GJRJ3\KEIL4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  temple (TEMPLE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     005CH     UNIT         ?PR?MAIN?TEMPLE
+            CODE    005FH     0011H     UNIT         ?PR?_DELAY?TEMPLE
+            CODE    0070H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   temple (TEMPLE)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEMPLE
+
+?PR?MAIN?TEMPLE
+  +--> ?PR?_DELAY?TEMPLE
+
+
+
+SYMBOL TABLE OF MODULE:  temple (TEMPLE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEMPLE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0065H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  B:0090H.5       PUBLIC        beep
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/21/2021  19:33:33  PAGE 2
+
+
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  C:0061H         SYMBOL        L?0025
+  -------         PROC          L?0024
+  -------         ENDPROC       L?0024
+  C:0061H         SYMBOL        L?0025
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:0065H         LINE#         5
+  C:0065H         LINE#         6
+  C:0065H         LINE#         7
+  C:006FH         LINE#         8
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         9
+  C:0003H         LINE#         10
+  C:0003H         LINE#         12
+  C:0006H         LINE#         13
+  C:0009H         LINE#         14
+  C:0009H         LINE#         15
+  C:0009H         LINE#         16
+  C:000CH         LINE#         17
+  C:000CH         LINE#         18
+  C:0017H         LINE#         19
+  C:001AH         LINE#         20
+  C:0025H         LINE#         21
+  C:0028H         LINE#         22
+  C:0028H         LINE#         23
+  C:0033H         LINE#         24
+  C:0036H         LINE#         25
+  C:0041H         LINE#         26
+  C:004FH         LINE#         27
+  C:004FH         LINE#         28
+  C:0051H         LINE#         29
+  C:0058H         LINE#         30
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEMPLE
+
+Program Size: data=9.0 xdata=0 code=124
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

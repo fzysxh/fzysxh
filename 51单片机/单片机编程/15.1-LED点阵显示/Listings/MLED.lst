@@ -1,0 +1,40 @@
+C51 COMPILER V9.54   MLED                                                                  12/03/2021 10:15:41 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MLED
+OBJECT MODULE PLACED IN .\Objects\MLED.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE MLED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -MLED.lst) TABS(2) OBJECT(.\Objects\MLED.obj)
+
+line level    source
+
+   1          #include<regx52.h>
+   2          #include"_74HC595.h"
+   3          #include"delay.h"
+   4          #define M_LED P0
+   5          /*
+   6          brief:输出第P列，显示为D对应
+   7              come_in:
+   8              out:
+   9          */
+  10          void MLED(unsigned char P,D)
+  11          {
+  12   1        _74HC595(D);
+  13   1        M_LED=~(0x80>>P);
+  14   1        delay(1);
+  15   1        M_LED=0xff;
+  16   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     34    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

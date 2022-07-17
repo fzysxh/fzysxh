@@ -1,0 +1,5 @@
+"dtsmg.obj",
+"delay.obj",
+"smgnumber.obj" 
+TO "dtsmg" 
+RAMSIZE(256) 

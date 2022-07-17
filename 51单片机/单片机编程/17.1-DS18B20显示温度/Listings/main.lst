@@ -1,0 +1,61 @@
+C51 COMPILER V9.54   MAIN                                                                  01/04/2022 19:42:54 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<LCD1602.h>
+   3          #include"DS18B20.h"
+   4          void main()
+   5          {
+   6   1        unsigned char L,H;
+   7   1        int TT=0;
+   8   1        float T=0;
+   9   1        LCD_Init();
+  10   1        LCD_ShowString(1,1,"Temperature:");
+  11   1        while(1)
+  12   1        {
+  13   2          DS18B20_Init();           //开始操作
+  14   2          DS18B20_WriteByte(0xcc); //ROM操作（跳过选择）
+  15   2          DS18B20_WriteByte(0x44); //温度变化
+  16   2          DS18B20_Init();          
+  17   2          DS18B20_WriteByte(0xcc);
+  18   2          DS18B20_WriteByte(0xbe);//写入读取操作
+  19   2          L=DS18B20_ReceiveByte();//接受发来的两字节温度值
+*** WARNING C206 IN LINE 19 OF main.c: 'DS18B20_ReceiveByte': missing function-prototype
+  20   2          H=DS18B20_ReceiveByte();
+  21   2          TT=(H<<8)|L; 
+  22   2          T=TT/16.0;
+  23   2          if(T<0)       //如果温度小于0
+  24   2          {
+  25   3            LCD_ShowChar(2,1,'-');  //显示负号
+  26   3            T=-T;     //将温度变为正数
+  27   3          }
+  28   2          else        //如果温度大于等于0
+  29   2          {
+  30   3            LCD_ShowChar(2,1,'+');  //显示正号
+  31   3          }
+  32   2          LCD_ShowNum(2,2,T,3);   //显示温度整数部分
+  33   2          LCD_ShowChar(2,5,'.');    //显示小数点
+  34   2          LCD_ShowNum(2,6,(unsigned long)(T*10000)%10000,4);//显示温度小数部分
+  35   2        }
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    232    ----
+   CONSTANT SIZE    =     13    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

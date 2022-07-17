@@ -1,0 +1,66 @@
+C51 COMPILER V9.54   SMGNUMBER                                                             11/21/2021 22:54:54 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE SMGNUMBER
+OBJECT MODULE PLACED IN smgnumber.OBJ
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE smgnumber.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<regx52.h>
+   2          #include"delay.h"
+   3          #define LSA P2_2
+   4          #define LSB P2_3
+   5          #define LSC P2_4
+   6          typedef unsigned int u16;
+   7          typedef unsigned char u8;
+   8          void smgnumber(unsigned int which,what)
+   9          {
+  10   1        u8 code smg[]={0x3f  , 0x06 , 0x5b , 0x4f , 0x66 , 0x6d, 0x7d , 0x07 , 0x7f  , 0x6f , 0x77 , 0x7c ,0x39 ,
+             - 0x5e , 0x79 , 0x71 };
+  11   1        switch(which)
+  12   1            {
+  13   2              case (8):
+  14   2                LSA=0;LSB=0;LSC=0;break;
+  15   2              case (7):
+  16   2                LSA=1;LSB=0;LSC=0;break;
+  17   2              case (6):
+  18   2                LSA=0;LSB=1;LSC=0;break;
+  19   2              case (5):
+  20   2                LSA=1;LSB=1;LSC=0;break;
+  21   2              case (4):
+  22   2                LSA=0;LSB=0;LSC=1;break;
+  23   2              case (3):
+  24   2                LSA=1;LSB=0;LSC=1;break;
+  25   2              case (2):
+  26   2                LSA=0;LSB=1;LSC=1;    break;
+  27   2              case (1):
+  28   2                LSA=1;LSB=1;LSC=1;break;
+  29   2            }
+  30   1          switch(what)
+  31   1              {
+  32   2                case(1):P0=smg[1];delay(1);P0=0x00;break;
+  33   2                case(2):P0=smg[2];delay(1);P0=0x00;break;
+  34   2                case(3):P0=smg[3];delay(1);P0=0x00;break;
+  35   2                case(4):P0=smg[4];delay(1);P0=0x00;break;
+  36   2                case(5):P0=smg[5];delay(1);P0=0x00;break;
+  37   2                case(6):P0=smg[6];delay(1);P0=0x00;break;
+  38   2                case(7):P0=smg[7];delay(1);P0=0x00;break;
+  39   2                case(8):P0=smg[8];delay(1);P0=0x00;break;
+  40   2                case(0):P0=smg[0];delay(1);P0=0x00;break;
+  41   2              }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    195    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,63 @@
+C51 COMPILER V9.54   OUT                                                                   11/22/2021 21:39:15 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE OUT
+OBJECT MODULE PLACED IN .\Objects\out.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE out.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\o
+                    -ut.lst) TABS(2) OBJECT(.\Objects\out.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include<delay.h>
+   3          typedef unsigned int u16;   
+   4          typedef unsigned char u8;
+   5          u16 zhi=0;
+   6          #define KEY P1
+   7          u8 code smgduan[17]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e};
+   8          /*
+   9          由1~9再涨
+  10          */
+  11          int cs()
+  12          {
+  13   1        zhi=0;
+  14   1          KEY=0x0f;
+  15   1          if(KEY!=0x0f)
+  16   1          {
+  17   2            delay(10);
+  18   2              KEY=0x0f;
+  19   2            switch(KEY)
+  20   2            {
+  21   3              case(0x0e):zhi=4;break;
+  22   3              case(0x0d):zhi=3;break;
+  23   3              case(0x0b):zhi=2;break;
+  24   3              case(0x07):zhi=1;break;
+  25   3            }
+  26   2              
+  27   2            KEY=0xf0;
+  28   2              switch(KEY)
+  29   2              {
+  30   3                case(0xe0):zhi+=12;break;
+  31   3                case(0xd0):zhi+=8;break;
+  32   3                case(0xb0):zhi+=4;break;
+  33   3                case(0x70):zhi+=0;break;
+  34   3              }
+  35   2              while(KEY!=0xf0);
+  36   2          } 
+  37   1        
+  38   1          return zhi;
+  39   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    125    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

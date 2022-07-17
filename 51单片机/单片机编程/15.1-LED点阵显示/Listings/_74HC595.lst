@@ -1,0 +1,49 @@
+C51 COMPILER V9.54   _74HC595                                                              12/03/2021 10:13:48 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE _74HC595
+OBJECT MODULE PLACED IN .\Objects\_74HC595.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE _74HC595.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\_74HC595.lst) TABS(2) OBJECT(.\Objects\_74HC595.obj)
+
+line level    source
+
+   1          /*
+   2              brief：输出输入的值
+   3              come_in:
+   4              out:
+   5          */
+   6          #include<regx52.h>
+   7          sbit SER=P3^4;
+   8          sbit RCK=P3^5;
+   9          sbit SRCK=P3^6;
+  10          
+  11          void _74HC595(unsigned char Byte)
+  12          {
+  13   1        unsigned char i;
+  14   1        RCK=0;
+  15   1        SRCK=0;
+  16   1        for(i=0;i<8;i++)
+  17   1        {
+  18   2          
+  19   2          SER=Byte&(0x80>>i);
+  20   2          SRCK=1;
+  21   2          SRCK=0;
+  22   2        }
+  23   1        RCK=1;
+  24   1        RCK=0;
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     49    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,57 @@
+C51 COMPILER V9.54   MAIN                                                                  01/16/2022 19:42:48 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) DEBUG OBJECTEXTEND PRINT(.\Listings\main.ls
+                    -t) TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include"Timer0.h"
+   3          #include"delay.h"
+   4          unsigned char high=0,i;
+   5          sbit DA=P2^1;
+   6          void main()
+   7          {
+   8   1      
+   9   1        Timer0Init();
+  10   1        while(1)
+  11   1        {
+  12   2          for(i=0;i<100;i++)
+  13   2          {
+  14   3            high=i;
+  15   3            delay(10);
+  16   3          }
+  17   2          for(i=100;i>0;i--)
+  18   2          {
+  19   3            high=i;
+  20   3          delay(10);
+  21   3          }
+  22   2        }
+  23   1      }
+  24          void Timer0(void)   interrupt 1
+  25          {
+  26   1        static unsigned int count;
+  27   1        TL0 = 0x91;   
+  28   1        TH0 = 0xff;   
+  29   1        count++;
+  30   1        if(count<high){DA=1;}
+  31   1        else{DA=0;}
+  32   1        count%=100;
+  33   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    129    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

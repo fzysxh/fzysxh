@@ -1,0 +1,104 @@
+C51 COMPILER V9.54   DS18B20                                                               01/04/2022 19:42:54 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DS18B20
+OBJECT MODULE PLACED IN .\Objects\DS18B20.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE DS18B20.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\DS18B20.lst) TABS(2) OBJECT(.\Objects\DS18B20.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          sbit IC=P3^7;
+   3          #define DS18B20_SKIP_ROM      0xCC
+   4          #define DS18B20_CONVERT_T     0x44
+   5          #define DS18B20_READ_SCRATCHPAD   0xBE
+   6          /*
+   7              brief:初始化
+   8              come_in:
+   9              out:
+  10          */
+  11          void DS18B20_Init()
+  12          {
+  13   1        unsigned char i;
+  14   1        IC=1;
+  15   1        IC=0;
+  16   1        i = 221;while (--i);//480us
+  17   1        IC=1;
+  18   1        i = 22;while (--i);//50us
+  19   1        i = 221;while (--i);//480us
+  20   1      }
+  21          /*
+  22              brief:写入一位
+  23              come_in:写入的逻辑值
+  24              out:
+  25          */
+  26          void DS18B20_Write(unsigned char a)
+  27          {
+  28   1        unsigned char i;
+  29   1        IC=0;
+  30   1        i = 4;while (--i);//11us
+  31   1        if(a){IC=1;while (--i);}//56us
+  32   1        else{i = 25;while (--i);IC=1;}//56us
+  33   1      }
+  34          /*
+  35              brief:接收一位
+  36              come_in:
+  37              out:一位逻辑值
+  38          */
+  39          unsigned char DS1802_Receive()
+  40          {
+  41   1        unsigned char i,j;
+  42   1        IC=0;
+  43   1        i = 2;while (--i);//6us
+  44   1        IC=1;
+  45   1        i = 2;while (--i);//6us
+  46   1        if(IC){j= 1;}
+  47   1        else {j=0;}
+  48   1        i = 22;while (--i);//50us
+  49   1        return j;
+  50   1      }
+  51          /*
+  52              brief:写入一个字节
+  53              come_in:要写入的字节
+  54              out:
+C51 COMPILER V9.54   DS18B20                                                               01/04/2022 19:42:54 PAGE 2   
+
+  55          */
+  56          void DS18B20_WriteByte(unsigned char Byte)
+  57          {
+  58   1        unsigned char i;
+  59   1        for(i=0;i<8;i++)
+  60   1        {DS18B20_Write(Byte&(0x01<<i));}
+  61   1      }
+  62          /*
+  63              brief:接受一个字节
+  64              come_in:
+  65              out:一个字节
+  66          */
+  67          unsigned char DS18B20_ReceiveByte()
+  68          {
+  69   1        unsigned char i,Byte=0x00;
+  70   1        for(i=0;i<8;i++)
+  71   1        {
+  72   2          if(DS1802_Receive()){Byte|=(0x01<<i);}
+  73   2        }
+  74   1        return Byte;
+  75   1      }
+  76          
+  77            
+  78          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    123    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

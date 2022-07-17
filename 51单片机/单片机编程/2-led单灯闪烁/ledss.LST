@@ -1,0 +1,38 @@
+C51 COMPILER V9.01   LEDSS                                                                 03/16/2021 22:48:23 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LEDSS
+OBJECT MODULE PLACED IN ledss.OBJ
+COMPILER INVOKED BY: C:\Users\∑Ω’Ò—Û\Desktop\dpj\C51\BIN\C51.EXE ledss.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit led1=P2^0;
+   3          void delay(unsigned int i)
+   4          {
+   5   1              while(i--);
+   6   1      }
+   7          void main()
+   8          {       while(1)
+   9   1      
+  10   1              {       led1=0;
+  11   2                      delay(50000);
+  12   2                      led1=1;
+  13   2                      delay(50000);
+  14   2               }
+  15   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

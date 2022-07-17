@@ -1,0 +1,104 @@
+C51 COMPILER V9.54   LOGIC                                                                 02/16/2022 21:52:58 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE LOGIC
+OBJECT MODULE PLACED IN .\Objects\logic.obj
+COMPILER INVOKED BY: D:\gjrj3\keil4\C51\BIN\C51.EXE logic.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\logic.lst) TABS(2) OBJECT(.\Objects\logic.obj)
+
+line level    source
+
+   1          #include "logic.h"
+   2          extern int right;
+   3          extern int left;
+   4          #define high 30//75
+   5          #define med 20//50
+   6          #define low 0//25
+   7          void car_left()
+   8          {
+   9   1         right=high;
+  10   1         left=low;
+  11   1      }
+  12          void car_right()
+  13          {
+  14   1         right=low;
+  15   1         left=high;
+  16   1      }
+  17          void car_lleft()
+  18          {
+  19   1         right=med;
+  20   1         left=low;
+  21   1      }
+  22          void car_lright()
+  23          {
+  24   1         right=low;
+  25   1         left=med;
+  26   1      }
+  27          void car_stop()
+  28          {
+  29   1         right=0;
+  30   1         left=0;
+  31   1      }
+  32          void car_move()
+  33          {
+  34   1         right=med+8;
+  35   1         left=med;
+  36   1      }
+  37          void logic(unsigned char IN1,unsigned char IN2,unsigned char IN3,unsigned char IN4)
+  38          {
+  39   1        //未检测到黑线，停止
+  40   1        if(((IN1==1)&&(IN2==1)&&(IN3==1)&&(IN4==1)))
+  41   1        {
+  42   2          car_stop();
+  43   2        }
+  44   1        //黑线在中央，正常行驶
+  45   1        if(((IN1==0)&&(IN2==1)&&(IN3==1)&&(IN4==0))||((IN1==0)&&(IN2==0)&&(IN3==0)&&(IN4==0)))
+  46   1        {
+  47   2          car_move();
+  48   2        }
+  49   1        //黑线偏左，车头偏右,左转
+  50   1        if((IN1==0)&&(IN2==0)&&(IN3==1)&&(IN4==1))
+  51   1        {
+  52   2          car_lleft();
+  53   2        }
+  54   1        //黑线偏右，车头偏左,右转
+C51 COMPILER V9.54   LOGIC                                                                 02/16/2022 21:52:58 PAGE 2   
+
+  55   1        if((IN1==1)&&(IN2==1)&&(IN3==0)&&(IN4==0))
+  56   1        {
+  57   2          car_lright();
+  58   2        }
+  59   1        //右拐情况
+  60   1        if((IN1==1)&&(IN2==0)&&(IN3==0)&&(IN4==0))
+  61   1        {
+  62   2          car_right();
+  63   2        }
+  64   1        //左拐情况
+  65   1        if((IN1==0)&&(IN2==0)&&(IN3==0)&&(IN4==1))
+  66   1        {
+  67   2          car_left();
+  68   2        }
+  69   1        if((IN1==0)&&(IN2==0)&&(IN3==1)&&(IN4==0))
+  70   1        {
+  71   2          car_lleft();
+  72   2        }
+  73   1        if((IN1==0)&&(IN2==1)&&(IN3==0)&&(IN4==0))
+  74   1        {
+  75   2          car_lright();
+  76   2        }
+  77   1      }
+  78            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    214    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
